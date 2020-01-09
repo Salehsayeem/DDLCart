@@ -1,0 +1,79 @@
+﻿@model DropDownListCart.Models.Item
+@using Vereyon.Web
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Save</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" id="ItemFrom">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="Items" class="form-control" onchange="getValue()">
+                    <option value="">Select Product</option>
+                    @foreach (var aItem in ViewBag.Items)
+                    {
+                        <option value="@aItem.Id">@aItem.Name</option>
+                    }
+                </select>
+                
+                <label id="messageLabel1" style="color: red; font-weight: normal; font-size: 10px; font-style:italic;"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class=" form-control" id="Price" type="text" readonly="readonly" />
+            </div>
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class=" form-control" id="Quantity" type="text"  required />
+                <label id="messageLabel" style="color: red; font-weight: normal; font-size: 10px; font-style:italic;"></label>
+            </div>
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            
+        </div>
+        @Html.RenderFlashMessages()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="addToCart" type="button" value="ADD" class="btn btn-default" />
+            </div>
+        </div>
+        
+    </div>
+
+    <table id="OrderData" class="table table-bordered table-striped">
+        <thead class="bg-primary">
+            <tr>
+                <th class="name">Name</th>
+                <th class="price">Price</th>
+                <th class="quantity">Quantity</th>
+                <th class="stotal">Sub-Total</th>
+            </tr>
+        </thead>
+        <tbody id="cartTable">
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <th></th>
+                <th></th>
+                <th id="TotalOrder"></th>
+            </tr>
+        </tfoot>
+    </table>
+    
+}
+
+<script src="~/Scripts/dropdownJavascript.js"></script>
