@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>
+            Class Objects
+        </title>
+    </head>
+    <script type="text/javascript">
+    var student =  new Object();
+    student.name = "Sayeem";
+    student.Roll = 5;
+    student.MathMarks = 80 ;
+    student.ENglishMarks =75;
+    student.ScienceMarks = 95;
+    student.CalculateAverage = function(){
+        var avg = ((student.MathMarks +student.ENglishMarks+student.ScienceMarks)/3);
+        return avg;
+    };
+    student.DisplayDetails = function(){
+        document.write(`Student Roll = + $(this.student.Roll) +</br>`);
+        document.write("Student NAme = "+ student.name+"</br>");
+        document.write("Average marks " +avg );
+    };
+    student.DisplayDetails();
+    </script>
+</html>

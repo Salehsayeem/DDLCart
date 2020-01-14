@@ -1,0 +1,48 @@
+﻿@model CartWithJS.Models.Cart
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cart</h2>
+
+<form class="form-horizontal" id="CartForm" asp-controller="Cart" asp-action="Save" onsubmit="return formValidation()">
+    <div class=" form-group">
+    <label class="col-md-2 control-label">Product Name</label>
+    <div class="col-md-10">
+        <select id="Name" class="form-control" onchange="getValue()">
+            <option value="">Select Product</option>
+            @foreach (var aCart in ViewBag.Carts)
+            {
+                <option value="@aCart.Id">@aCart.Name</option>
+            }
+        </select>
+
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Product Price</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" id="Price" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Product Quantity</label>
+        <div class="col-md-10">
+            <input class="form-control " min="1" type="text" id="Quantity" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="AddToCart" type="button" value="ADD" class="btn btn-danger" />
+            <input type="range"/>
+            <input type="color" />
+            <input type="date" />
+        </div>
+    </div>
+</form>
+
+
+
+    <script src="~/Scripts/Cart.js"></script>
