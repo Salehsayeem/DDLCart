@@ -1,0 +1,51 @@
+<html>
+    <title>2233</title>
+    <head>
+        
+    </head>
+    <body>
+        <form>
+            <label>Name</label>
+            <input id="Name" type="text">
+            <br>
+            <label>Roll</label>
+            <input id="Roll" type="text">
+            <br>
+            <label>Subject 1 mark</label>
+            <input id="s1Mark" type="text">
+            <br>
+            <label>Subject 2 mark</label>
+            <input id="s2Mark" type="text">
+            <br>
+            <label>Subject 3 mark</label>
+            <input id="s3Mark" type="text">
+            <br>
+            <input type="button" onclick="student()" value="Average">
+            
+            <br>
+            <label id="average"></label>
+        </form>
+        <script type="text/javascript">
+            function student(){
+                var today = new Date();
+                var name = document.getElementById("Name").value;
+                var roll = document.getElementById("Roll").value;
+                var s1mark = parseFloat(document.getElementById("s1Mark").value);
+                var s2mark = parseInt(document.getElementById("s2Mark").value);
+                var s3mark = parseInt(document.getElementById("s3Mark").value);
+                document.write(name +"</br>");
+                document.write(roll +"</br>");
+                function calculateAverage(){
+                return ((s1mark+s2mark+s3mark)/3);
+                
+            }
+            document.write(today + "</br>");
+            console.log(calculateAverage());
+                document.write(calculateAverage().toFixed(2));
+            }
+            
+            
+            </script>
+    </body>
+    
+</html>

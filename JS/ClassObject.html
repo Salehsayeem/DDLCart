@@ -16,9 +16,9 @@
         return avg;
     };
     student.DisplayDetails = function(){
-        document.write(`Student Roll = + $(this.student.Roll) +</br>`);
+        document.write("Student Roll = "+ student.Roll +"</br>");
         document.write("Student NAme = "+ student.name+"</br>");
-        document.write("Average marks " +avg );
+        document.write("Average marks " +student.CalculateAverage() );
     };
     student.DisplayDetails();
     </script>
